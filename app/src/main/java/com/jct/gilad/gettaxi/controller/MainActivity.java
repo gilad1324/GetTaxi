@@ -1,9 +1,11 @@
-package com.jct.gilad.gettaxi;
+package com.jct.gilad.gettaxi.controller;
 
 import android.app.Activity;
 import android.os.Bundle;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.jct.gilad.gettaxi.R;
+
 public class MainActivity extends Activity {
 
     @Override
