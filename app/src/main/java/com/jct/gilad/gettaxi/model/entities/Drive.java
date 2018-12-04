@@ -15,7 +15,6 @@ public class Drive {
     long clientPhoneNumber;
     String clientEmail;
 
-
     public Status getStatus() {
         return status;
     }

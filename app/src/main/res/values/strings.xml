@@ -5,4 +5,5 @@
     <string name="edit_phone">Phone number</string>
     <string name="edit_email">Email</string>
     <string name="edit_dest">Destination</string>
+    <string name="todo">TODO</string>
 </resources>

@@ -13,13 +13,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:autofillHints=""
         android:ems="10"
         android:hint="@string/edit_name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" tools:targetApi="o" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editText8"
@@ -34,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText2"
-        android:autofillHints="" tools:targetApi="o"/>
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editText9"
@@ -49,7 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText8"
-        android:autofillHints="" tools:targetApi="o"/>
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editText10"
@@ -64,18 +64,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText9"
-        android:autofillHints="" tools:targetApi="o"/>
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        style="@android:style/Widget.Material.Light.ImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:src="@android:drawable/ic_media_play"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/todo" />
+        android:autofillHints="" />
 
 </android.support.constraint.ConstraintLayout>
