@@ -1,4 +1,4 @@
-package com.jct.gilad.gettaxi.model;
+package com.jct.gilad.gettaxi.model.backend;
 
 import com.jct.gilad.gettaxi.model.backend.Backend;
 import com.jct.gilad.gettaxi.model.datasource.FireBase_DbManager;
