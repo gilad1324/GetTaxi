@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.jct.gilad.gettaxi.R;
-import com.jct.gilad.gettaxi.controller.MainActivity;
 
 public class DisplayMessageActivity extends Activity {
 
