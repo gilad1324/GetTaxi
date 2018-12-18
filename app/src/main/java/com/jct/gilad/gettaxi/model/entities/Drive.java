@@ -5,6 +5,17 @@ import android.location.Location;
 import java.sql.Time;
 
 public class Drive {
+    public Drive(Status status, Location sourceLocation, Location destLocation, Time startTime, Time endTime, String clientName, long clientPhoneNumber, String clientEmail) {
+
+        this.status = status;
+        this.sourceLocation = sourceLocation;
+        this.destLocation = destLocation;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.clientName = clientName;
+        this.clientPhoneNumber = clientPhoneNumber;
+        this.clientEmail = clientEmail;
+    }
 
     Status status;
     Location sourceLocation;

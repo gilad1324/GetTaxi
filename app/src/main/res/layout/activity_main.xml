@@ -8,7 +8,7 @@
     tools:context=".controller.MainActivity">
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/NameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" tools:targetApi="o"/>
 
     <EditText
-        android:id="@+id/editText8"
+        android:id="@+id/PhoneEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -35,10 +35,10 @@
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" tools:targetApi="o"/>
+        app:layout_constraintTop_toBottomOf="@+id/NameEditText" tools:targetApi="o"/>
 
     <EditText
-        android:id="@+id/editText9"
+        android:id="@+id/EmailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -50,11 +50,11 @@
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText8" tools:targetApi="o"/>
+        app:layout_constraintTop_toBottomOf="@+id/PhoneEditText" tools:targetApi="o"/>
 
 
     <EditText
-        android:id="@+id/editText10"
+        android:id="@+id/SurceEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -66,10 +66,11 @@
         android:inputType="textPostalAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText9" tools:targetApi="o"/>
+        app:layout_constraintTop_toBottomOf="@+id/EmailEditText"
+        tools:targetApi="o" />
 
     <EditText
-        android:id="@+id/editText11"
+        android:id="@+id/DestinationEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -80,12 +81,14 @@
         android:hint="@string/edit_dest"
         android:inputType="textPostalAddress"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText10" tools:targetApi="o"/>
+        app:layout_constraintTop_toBottomOf="@+id/SurceEditText"
+        tools:targetApi="o" />
 
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton7"
+        android:id="@+id/addTexiButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -102,6 +105,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText11"
+        app:layout_constraintTop_toBottomOf="@+id/DestinationEditText"
         app:layout_constraintVertical_bias="1.0" />
 </android.support.constraint.ConstraintLayout>
