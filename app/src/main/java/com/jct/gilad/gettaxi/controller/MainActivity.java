@@ -2,6 +2,7 @@ package com.jct.gilad.gettaxi.controller;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.jct.gilad.gettaxi.R;
+import com.jct.gilad.gettaxi.model.entities.Status;
 
 import java.util.jar.Attributes;
 
@@ -80,13 +82,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
              if(PhoneEditText.getText().toString().trim().length() > 0)
              {clientPhoneNumber = Long.parseLong(PhoneEditText.getText().toString());}
-             else//do somting with tost
+             //else//do somting with tost
 
-            Status status,
-            Location sourceLocation,
-            Location destLocation,
-            Time startTime,
-            Time endTime,
+            Status status= Status.AVAILABLE;
+
+           // Location sourceLocation
+            //Location destLocation,
+            //Time startTime,
+            //Time endTime,
 
 
 
