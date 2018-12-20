@@ -2,10 +2,11 @@ package com.jct.gilad.gettaxi.model.entities;
 
 import android.location.Location;
 
-import java.sql.Time;
+import java.util.Date;
+
 
 public class Drive {
-    public Drive(Status status, Location sourceLocation, Location destLocation, Time startTime, Time endTime, String clientName, long clientPhoneNumber, String clientEmail) {
+    public Drive(Status status, Location sourceLocation, Location destLocation, Date startTime, Date endTime, String clientName, long clientPhoneNumber, String clientEmail) {
 
         this.status = status;
         this.sourceLocation = sourceLocation;
@@ -20,8 +21,8 @@ public class Drive {
     Status status;
     Location sourceLocation;
     Location destLocation;
-    Time startTime;
-    Time endTime;
+    Date startTime;
+    Date endTime;
     String clientName;
     long clientPhoneNumber;
     String clientEmail;
@@ -50,19 +51,19 @@ public class Drive {
         this.destLocation = destLocation;
     }
 
-    public Time getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Time startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public Time getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Time endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 

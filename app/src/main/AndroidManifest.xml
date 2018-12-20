@@ -17,9 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".controller.DisplayMessageActivity"
-            android:parentActivityName=".controller.MainActivity" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBQIvMNsccUpeeKuBUeHjQzAeNVzftk77Y"/>
     </application>
 
 </manifest>

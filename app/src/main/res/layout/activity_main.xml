@@ -13,11 +13,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="9dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="14dp"
         android:autofillHints=""
+        android:drawableEnd="@drawable/ic_name"
         android:ems="10"
         android:hint="@string/edit_name"
         android:inputType="textPersonName"
+        android:outlineProvider="bounds"
+        android:textColorLink="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -31,12 +34,14 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:autofillHints=""
+        android:drawableEnd="@drawable/ic_phone"
         android:ems="10"
         android:hint="@string/edit_phone"
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NameEditText" tools:targetApi="o"/>
+        app:layout_constraintTop_toBottomOf="@+id/NameEditText"
+        tools:targetApi="o" />
 
     <EditText
         android:id="@+id/EmailEditText"
@@ -46,47 +51,40 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:autofillHints=""
+        android:drawableEnd="@drawable/ic_email"
         android:ems="10"
         android:hint="@string/edit_email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PhoneEditText" tools:targetApi="o"/>
+        app:layout_constraintTop_toBottomOf="@+id/PhoneEditText"
+        tools:targetApi="o" />
 
-
-    <EditText
-        android:id="@+id/SurceEditText"
+    <fragment
+        android:id="@+id/place_autocomplete_fragment1"
+        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/edit_source"
-        android:inputType="textPostalAddress"
+        android:layout_weight="0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EmailEditText"
-        tools:targetApi="o" />
+        app:layout_constraintTop_toBottomOf="@+id/EmailEditText" />
 
-    <EditText
-        android:id="@+id/DestinationEditText"
+    <fragment
+        android:id="@+id/place_autocomplete_fragment2"
+        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/edit_dest"
-        android:inputType="textPostalAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SurceEditText"
-        tools:targetApi="o" />
 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/place_autocomplete_fragment1"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addTexiButton"
@@ -106,6 +104,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DestinationEditText"
+        app:layout_constraintTop_toBottomOf="@+id/place_autocomplete_fragment2"
         app:layout_constraintVertical_bias="1.0" />
 </android.support.constraint.ConstraintLayout>
