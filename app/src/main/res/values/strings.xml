@@ -6,6 +6,6 @@
     <string name="edit_email">Email</string>
     <string name="edit_dest">Destination</string>
     <string name="edit_source">Source</string>
-    <string name="todo">TODO</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="todo" translatable="false">TODO</string>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
 </resources>

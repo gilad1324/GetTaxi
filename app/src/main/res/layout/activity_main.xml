@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/Theme.Design.Light"
@@ -37,7 +38,8 @@
         android:drawableEnd="@drawable/ic_phone"
         android:ems="10"
         android:hint="@string/edit_phone"
-        android:inputType="phone"
+        android:inputType=""
+        android:textColorLink="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NameEditText"
@@ -55,6 +57,7 @@
         android:ems="10"
         android:hint="@string/edit_email"
         android:inputType="textEmailAddress"
+        android:textColorLink="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PhoneEditText"
@@ -63,28 +66,54 @@
     <fragment
         android:id="@+id/place_autocomplete_fragment1"
         android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="4dp"
         android:layout_weight="0"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/getLocationButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EmailEditText" />
+        app:layout_constraintTop_toTopOf="@+id/getLocationButton" />
 
     <fragment
         android:id="@+id/place_autocomplete_fragment2"
         android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/locationImage"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/place_autocomplete_fragment1"/>
+        app:layout_constraintTop_toTopOf="@+id/locationImage" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/stopUpdateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:clickable="false"
+        android:focusable="false"
+        android:src="@drawable/ic_mylocation"
+        android:visibility="invisible"
+        app:backgroundTint="@color/cardview_light_background"
+        app:layout_constraintStart_toStartOf="@+id/getLocationButton"
+        app:layout_constraintTop_toTopOf="@+id/getLocationButton" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/getLocationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_mylocation_dark"
+        app:backgroundTint="@color/cardview_light_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EmailEditText" />
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addTexiButton"
@@ -93,7 +122,6 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
@@ -103,7 +131,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/place_autocomplete_fragment2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/locationImage"
+        android:layout_width="30dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/ic_location"
+        app:layout_constraintEnd_toEndOf="@+id/getLocationButton"
+        app:layout_constraintTop_toBottomOf="@+id/getLocationButton" />
 </android.support.constraint.ConstraintLayout>

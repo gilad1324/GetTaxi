@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GetTaxi</string>
+    <string name="edit_name">שם</string>
+    <string name="button_send">שלח</string>
+    <string name="edit_phone">טלפון</string>
+    <string name="edit_email">דואר אלקטרוני</string>
+    <string name="edit_dest">יעד</string>
+    <string name="edit_source">מוצא</string>
+</resources>
