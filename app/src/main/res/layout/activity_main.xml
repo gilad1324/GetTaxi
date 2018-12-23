@@ -19,26 +19,28 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:title="@string/app_name"
-            app:titleTextColor="@color/colorAccent"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="@string/app_name"
+            app:titleTextColor="@color/colorAccent" />
     </android.support.design.widget.AppBarLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/input_layout_name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="82dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_layout">
 
         <EditText
             android:id="@+id/NameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
             android:autofillHints=""
             android:drawableEnd="@drawable/ic_name"
             android:ems="10"
@@ -56,17 +58,18 @@
     <android.support.design.widget.TextInputLayout
         android:id="@+id/input_layout_phone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/input_layout_name"
-        >
+        android:layout_height="82dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_layout_name">
 
         <EditText
             android:id="@+id/PhoneEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
             android:autofillHints=""
             android:drawableEnd="@drawable/ic_phone"
             android:ems="10"
@@ -81,17 +84,18 @@
     <android.support.design.widget.TextInputLayout
         android:id="@+id/input_layout_email"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/input_layout_phone"
-        >
+        android:layout_height="82dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_layout_phone">
 
         <EditText
             android:id="@+id/EmailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
             android:autofillHints=""
             android:drawableEnd="@drawable/ic_email"
             android:ems="10"
@@ -121,6 +125,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
+        android:layout_marginTop="17dp"
         app:layout_constraintEnd_toEndOf="@+id/place_autocomplete_fragment1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/getLocationButton" />
@@ -136,6 +141,7 @@
         android:src="@drawable/ic_mylocation_searching"
         android:visibility="invisible"
         app:backgroundTint="@color/cardview_light_background"
+        app:fabSize="mini"
         app:layout_constraintStart_toStartOf="@+id/getLocationButton"
         app:layout_constraintTop_toTopOf="@+id/getLocationButton" />
 
@@ -145,11 +151,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="12dp"
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/ic_mylocation_dark"
         app:backgroundTint="@color/cardview_light_background"
+        app:fabSize="mini"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_layout_email" />
 
@@ -161,25 +168,35 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:clickable="true"
         android:focusable="true"
-        android:src="@drawable/ic_action_add"
+        android:src="@drawable/ic_taxi_svgrepo_com"
         app:backgroundTint="@color/colorSecondary"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationImage" />
 
     <ImageView
         android:id="@+id/locationImage"
         android:layout_width="30dp"
         android:layout_height="34dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="17dp"
+        android:contentDescription="@string/todo"
         android:src="@drawable/ic_location"
-        app:layout_constraintEnd_toEndOf="@+id/getLocationButton"
-        app:layout_constraintTop_toBottomOf="@+id/getLocationButton"
-        android:contentDescription="@string/todo" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/getLocationButton" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="233dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/taxi_image" />
+
 </android.support.constraint.ConstraintLayout>
