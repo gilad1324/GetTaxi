@@ -23,7 +23,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/C:/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/communication/ic_location_on_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/C:/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/device/ic_location_searching_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -33,7 +33,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_location" />
+                                      <entry key="imageAsset" value="C:\Users\Gilad\Desktop\outline_location_on_black_48.png" />
+                                      <entry key="outputName" value="ic_mylocation_searching" />
+                                      <entry key="theme" value="CUSTOM" />
                                       <entry key="themeColor" value="2a37e5" />
                                     </map>
                                   </option>
@@ -53,6 +55,11 @@
                 </map>
               </option>
             </PersistentState>
+          </value>
+        </entry>
+        <entry key="vectorWizard">
+          <value>
+            <PersistentState />
           </value>
         </entry>
       </map>

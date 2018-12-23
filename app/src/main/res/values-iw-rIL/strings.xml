@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">GetTaxi</string>
-    <string name="edit_name">שם</string>
-    <string name="button_send">שלח</string>
-    <string name="edit_phone">טלפון</string>
-    <string name="edit_email">דואר אלקטרוני</string>
-    <string name="edit_dest">יעד</string>
-    <string name="edit_source">מוצא</string>
+    <string name="hint_name">שם מלא</string>
+    <string name="hint_phone">מספר טלפון</string>
+    <string name="hint_email">כתובת אימייל</string>
+    <string name="hint_dest">יעד</string>
+    <string name="hint_source">מוצא</string>
+    <string name="err_msg_name">הזן את שמך המלא</string>
+    <string name="err_msg_email">הזן כתובת אימייל תקנית</string>
+    <string name="err_msg_phone">הזן מספר טלפון תקין</string>
 </resources>

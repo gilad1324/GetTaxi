@@ -1,7 +1,6 @@
 package com.jct.gilad.gettaxi.controller;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -12,9 +11,16 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -30,8 +36,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends Activity implements View.OnClickListener {
-
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private Toolbar toolbar;
     private PlaceAutocompleteFragment placeAutocompleteFragment1;
     private PlaceAutocompleteFragment placeAutocompleteFragment2;
     Location locationA = new Location("A");//= new Location(from);
@@ -41,7 +47,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private EditText NameEditText;
     private EditText PhoneEditText;
     private EditText EmailEditText;
-    private Button addTexiButton;
+    private TextInputLayout inputLayoutName, inputLayoutPhone, inputLayoutEmail;
+    private FloatingActionButton addTaxiButton;
 
     private FloatingActionButton getLocationButton;
     private FloatingActionButton stopUpdateButton;
@@ -59,7 +66,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //findViews();
+        findViews();
         findViewsLocationSearch();
         findViewsGPS();
     }
@@ -69,21 +76,139 @@ public class MainActivity extends Activity implements View.OnClickListener {
         NameEditText = (EditText) findViewById(R.id.NameEditText);
         PhoneEditText = (EditText) findViewById(R.id.PhoneEditText);
         EmailEditText = (EditText) findViewById(R.id.EmailEditText);
-        ;
-        //SurceEditText=(EditText)findViewById( R.id.SurceEditText );;
-        //DestinationEditText=(EditText)findViewById( R.id.DestinationEditText );;
-        addTexiButton = (Button) findViewById(R.id.addTexiButton);
-        addTexiButton.setOnClickListener(this);
+
+        addTaxiButton = (FloatingActionButton) findViewById(R.id.addTaxiButton);
+        //////////
+        addTaxiButton.setOnClickListener(this);
+        //////////
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        inputLayoutName = (TextInputLayout) findViewById(R.id.input_layout_name);
+        inputLayoutEmail = (TextInputLayout) findViewById(R.id.input_layout_email);
+        inputLayoutPhone = (TextInputLayout) findViewById(R.id.input_layout_phone);
+
+        NameEditText.addTextChangedListener(new MyTextWatcher(NameEditText));
+        PhoneEditText.addTextChangedListener(new MyTextWatcher(PhoneEditText));
+        EmailEditText.addTextChangedListener(new MyTextWatcher(EmailEditText));
+
+        addTaxiButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                submitForm();
+            }
+        });
+    }
+
+    private void submitForm() {
+        if (!validateName()) {
+            Toast.makeText(getApplicationContext(), R.string.err_msg_name, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!validateEmail()) {
+            Toast.makeText(getApplicationContext(), R.string.err_msg_email, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!validatePhone()) {
+            Toast.makeText(getApplicationContext(), R.string.err_msg_phone, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Toast.makeText(getApplicationContext(), "Thank You!", Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean validateName() {
+        if (NameEditText.getText().toString().trim().isEmpty()) {
+            inputLayoutName.setError(getString(R.string.err_msg_name));
+            requestFocus(NameEditText);
+            return false;
+        } else {
+            inputLayoutName.setErrorEnabled(false);
+        }
+
+        return true;
+    }
+
+    private boolean validateEmail() {
+        String email = EmailEditText.getText().toString().trim();
+
+        if (email.isEmpty() || !isValidEmail(email)) {
+            inputLayoutEmail.setError(getString(R.string.err_msg_email));
+            requestFocus(EmailEditText);
+            return false;
+        } else {
+            inputLayoutEmail.setErrorEnabled(false);
+        }
+
+        return true;
+    }
+
+    private boolean validatePhone() {
+        String phone = PhoneEditText.getText().toString().trim();
+
+        if (phone.isEmpty() || !isValidPhone(phone)) {
+            inputLayoutPhone.setError(getString(R.string.err_msg_phone));
+            requestFocus(PhoneEditText);
+            return false;
+        } else {
+            inputLayoutPhone.setErrorEnabled(false);
+        }
+
+        return true;
+    }
+
+    private static boolean isValidEmail(String email) {
+        return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+    private static boolean isValidPhone(String phone) {
+        return !TextUtils.isEmpty(phone) && Patterns.PHONE.matcher(phone).matches();
+    }
+
+    private void requestFocus(View view) {
+        if (view.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
+    }
+
+    private class MyTextWatcher implements TextWatcher {
+
+        private View view;
+
+        private MyTextWatcher(View view) {
+            this.view = view;
+        }
+
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        public void afterTextChanged(Editable editable) {
+            switch (view.getId()) {
+                case R.id.NameEditText:
+                    validateName();
+                    break;
+                case R.id.EmailEditText:
+                    validateEmail();
+                    break;
+                case R.id.PhoneEditText:
+                    validatePhone();
+                    break;
+            }
+        }
     }
 
     private void findViewsLocationSearch() {
         placeAutocompleteFragment1 = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment1);
         placeAutocompleteFragment1.getView().findViewById(R.id.place_autocomplete_search_button).setVisibility(View.GONE);
 
-        placeAutocompleteFragment1.setHint(getString(R.string.edit_source));
+        placeAutocompleteFragment1.setHint(getString(R.string.hint_source));
         placeAutocompleteFragment2 = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment2);
         placeAutocompleteFragment2.getView().findViewById(R.id.place_autocomplete_search_button).setVisibility(View.GONE);
-        placeAutocompleteFragment2.setHint(getString(R.string.edit_dest));
+        placeAutocompleteFragment2.setHint(getString(R.string.hint_dest));
         placeAutocompleteFragment1.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
@@ -129,7 +254,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 // Called when a new location is found by the network location provider.
                 //    Toast.makeText(getBaseContext(), location.toString(), Toast.LENGTH_LONG).show();
                 placeAutocompleteFragment1.setText(getPlace(location));////location.toString());
-
+                stopUpdateButton.setImageResource(R.drawable.ic_mylocation);
                 // Remove the listener you previously added
                 //  locationManager.removeUpdates(locationListener);
             }
@@ -215,7 +340,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (v == addTexiButton)
+        if (v == addTaxiButton)
             addTaxi();
         if (v == getLocationButton) {
             getLocation(); // Handle clicks for getLocationButton
@@ -229,6 +354,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             getLocationButton.setEnabled(true);
             stopUpdateButton.setVisibility(View.GONE);
             getLocationButton.setVisibility(View.VISIBLE);
+            stopUpdateButton.setImageResource(R.drawable.ic_mylocation_searching);
         }
     }
 

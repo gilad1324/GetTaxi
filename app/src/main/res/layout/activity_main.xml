@@ -5,63 +5,103 @@
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Theme.Design.Light"
+    android:theme="@style/MyMaterialTheme"
     tools:context=".controller.MainActivity">
 
-    <EditText
-        android:id="@+id/NameEditText"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/toolbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="14dp"
-        android:autofillHints=""
-        android:drawableEnd="@drawable/ic_name"
-        android:ems="10"
-        android:hint="@string/edit_name"
-        android:inputType="textPersonName"
-        android:outlineProvider="bounds"
-        android:textColorLink="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:targetApi="o" />
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <EditText
-        android:id="@+id/PhoneEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:autofillHints=""
-        android:drawableEnd="@drawable/ic_phone"
-        android:ems="10"
-        android:hint="@string/edit_phone"
-        android:inputType=""
-        android:textColorLink="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NameEditText"
-        tools:targetApi="o" />
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:title="@string/app_name"
+            app:titleTextColor="@color/colorAccent"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    </android.support.design.widget.AppBarLayout>
 
-    <EditText
-        android:id="@+id/EmailEditText"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:autofillHints=""
-        android:drawableEnd="@drawable/ic_email"
-        android:ems="10"
-        android:hint="@string/edit_email"
-        android:inputType="textEmailAddress"
-        android:textColorLink="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PhoneEditText"
-        tools:targetApi="o" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_layout"
+        >
+
+        <EditText
+            android:id="@+id/NameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints=""
+            android:drawableEnd="@drawable/ic_name"
+            android:ems="10"
+            android:hint="@string/hint_name"
+            android:inputType="textPersonName"
+            android:outlineProvider="bounds"
+            android:singleLine="true"
+            android:textColorLink="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:targetApi="o" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/input_layout_name"
+        >
+
+        <EditText
+            android:id="@+id/PhoneEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints=""
+            android:drawableEnd="@drawable/ic_phone"
+            android:ems="10"
+            android:hint="@string/hint_phone"
+            android:inputType="phone"
+            android:textColorLink="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:targetApi="o" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/input_layout_phone"
+        >
+
+        <EditText
+            android:id="@+id/EmailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:autofillHints=""
+            android:drawableEnd="@drawable/ic_email"
+            android:ems="10"
+            android:hint="@string/hint_email"
+            android:inputType="textEmailAddress"
+            android:textColorLink="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:targetApi="o" />
+    </android.support.design.widget.TextInputLayout>
 
     <fragment
         android:id="@+id/place_autocomplete_fragment1"
@@ -69,7 +109,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="4dp"
         android:layout_weight="0"
         app:layout_constraintEnd_toStartOf="@+id/getLocationButton"
@@ -81,10 +120,10 @@
         android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        app:layout_constraintEnd_toStartOf="@+id/locationImage"
+        android:layout_marginStart="4dp"
+        app:layout_constraintEnd_toEndOf="@+id/place_autocomplete_fragment1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/locationImage" />
+        app:layout_constraintTop_toBottomOf="@+id/getLocationButton" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/stopUpdateButton"
@@ -94,7 +133,7 @@
         android:layout_alignParentBottom="true"
         android:clickable="false"
         android:focusable="false"
-        android:src="@drawable/ic_mylocation"
+        android:src="@drawable/ic_mylocation_searching"
         android:visibility="invisible"
         app:backgroundTint="@color/cardview_light_background"
         app:layout_constraintStart_toStartOf="@+id/getLocationButton"
@@ -112,11 +151,11 @@
         android:src="@drawable/ic_mylocation_dark"
         app:backgroundTint="@color/cardview_light_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EmailEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/input_layout_email" />
 
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/addTexiButton"
+        android:id="@+id/addTaxiButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
