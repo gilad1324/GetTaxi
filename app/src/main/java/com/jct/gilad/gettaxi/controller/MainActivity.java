@@ -162,6 +162,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static boolean isValidEmail(String email) {
         return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
+
     private static boolean isValidPhone(String phone) {
         return !TextUtils.isEmpty(phone) && Patterns.PHONE.matcher(phone).matches();
     }
