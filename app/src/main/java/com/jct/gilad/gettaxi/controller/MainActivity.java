@@ -106,13 +106,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        if (!validateEmail()) {
-            Toast.makeText(getApplicationContext(), R.string.err_msg_email, Toast.LENGTH_SHORT).show();
+        if (!validatePhone()) {
+            Toast.makeText(getApplicationContext(), R.string.err_msg_phone, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (!validatePhone()) {
-            Toast.makeText(getApplicationContext(), R.string.err_msg_phone, Toast.LENGTH_SHORT).show();
+        if (!validateEmail()) {
+            Toast.makeText(getApplicationContext(), R.string.err_msg_email, Toast.LENGTH_SHORT).show();
             return;
         }
 
