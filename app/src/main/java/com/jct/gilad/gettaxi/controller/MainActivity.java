@@ -344,6 +344,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             addTaxi();
         if (v == getLocationButton) {
             getLocation(); // Handle clicks for getLocationButton
+            getLocationButton.setEnabled(false);
+            stopUpdateButton.setEnabled(true);
             getLocationButton.setVisibility(View.INVISIBLE);
             stopUpdateButton.setVisibility(View.VISIBLE);
         }
@@ -352,7 +354,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             locationManager.removeUpdates(locationListener);
             stopUpdateButton.setEnabled(false);
             getLocationButton.setEnabled(true);
-            stopUpdateButton.setVisibility(View.GONE);
+            stopUpdateButton.setVisibility(View.INVISIBLE);
             getLocationButton.setVisibility(View.VISIBLE);
             stopUpdateButton.setImageResource(R.drawable.ic_mylocation_searching);
         }
