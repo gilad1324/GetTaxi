@@ -6,19 +6,19 @@ import java.util.Date;
 
 
 public class Drive {
-    public Drive(Status status, Location sourceLocation, Location destLocation, Date startTime, Date endTime, String clientName, long clientPhoneNumber, String clientEmail) {
+    public Drive(Status1 status, Location sourceLocation, Location destLocation, String clientName, long clientPhoneNumber, String clientEmail) {
 
         this.status = status;
         this.sourceLocation = sourceLocation;
         this.destLocation = destLocation;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.startTime = null;
+        this.endTime = null;
         this.clientName = clientName;
         this.clientPhoneNumber = clientPhoneNumber;
         this.clientEmail = clientEmail;
     }
 
-    Status status;
+    Status1 status;
     Location sourceLocation;
     Location destLocation;
     Date startTime;
@@ -27,11 +27,11 @@ public class Drive {
     long clientPhoneNumber;
     String clientEmail;
 
-    public Status getStatus() {
+    public Status1 getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(Status1 status) {
         this.status = status;
     }
 

@@ -28,9 +28,12 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.jct.gilad.gettaxi.R;
+import com.jct.gilad.gettaxi.model.backend.Backend;
+import com.jct.gilad.gettaxi.model.backend.BackendFactorySingelton;
+import com.jct.gilad.gettaxi.model.datasource.FireBase_DbManager;
+import com.jct.gilad.gettaxi.model.entities.Drive;
+import com.jct.gilad.gettaxi.model.entities.Status1;
 
 import java.io.IOException;
 import java.util.List;
@@ -56,13 +59,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     LocationManager locationManager;
     // Define a listener that responds to location updates
     LocationListener locationListener;
+    Backend database;
 
-
+    private String from, to;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -108,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(getApplicationContext(), R.string.err_msg_email, Toast.LENGTH_SHORT).show();
             return;
         }
+
 
         Toast.makeText(getApplicationContext(), "Thank You!", Toast.LENGTH_SHORT).show();
         addTaxi();
@@ -221,7 +224,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         placeAutocompleteFragment2.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(Place place) {
-                //  to = place.getAddress().toString();//get place details here
+                //to = place.getAddress().toString();//get place details here
                 locationB.setLatitude(place.getLatLng().latitude);
                 locationB.setLongitude(place.getLatLng().longitude);
             }
@@ -249,6 +252,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // Called when a new location is found by the network location provider.
                 //    Toast.makeText(getBaseContext(), location.toString(), Toast.LENGTH_LONG).show();
                 placeAutocompleteFragment1.setText(getPlace(location));////location.toString());
+                locationA.set(location);
                 stopUpdateButton.setImageResource(R.drawable.ic_mylocation);
                 // Remove the listener you previously added
                 //  locationManager.removeUpdates(locationListener);
@@ -277,6 +281,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             getLocationButton.setEnabled(false);
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+            //locationManager.requestLocationUpdates(LocationManager.PASSIVE_PROVIDER, 0, 0, locationListener);
         }
 
     }
@@ -326,6 +331,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
                 locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+                //locationManager.requestLocationUpdates(LocationManager.PASSIVE_PROVIDER,0,0,locationListener);
+
             } else {
                 Toast.makeText(this, "Until you grant the permission, we canot display the location", Toast.LENGTH_SHORT).show();
             }
@@ -337,7 +344,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v == addTaxiButton) {
             submitForm();
-
         }
         if (v == getLocationButton) {
             getLocation(); // Handle clicks for getLocationButton
@@ -359,32 +365,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void addTaxi() {
         try {
-            //int id = Integer.valueOf(this.IdEditText.getText().toString());
-            String clientName;
-            long clientPhoneNumber;
-            String clientEmail;
-            if (EmailEditText.getText().toString().trim().length() > 0) {
-                clientEmail = EmailEditText.getText().toString();
-            } else//do somting with tost
+            String clientName = NameEditText.getText().toString();
+            long clientPhoneNumber = Long.parseLong(PhoneEditText.getText().toString());
+            String clientEmail = EmailEditText.getText().toString();
 
-                if (NameEditText.getText().toString().trim().length() > 0) {
-                    clientName = NameEditText.getText().toString();
-                } else//do somting with tost
+            Status1 status= Status1.AVAILABLE;
 
-                    if (PhoneEditText.getText().toString().trim().length() > 0) {
-                        clientPhoneNumber = Long.parseLong(PhoneEditText.getText().toString());
-                    }
-            //else//do somting with tost
+            Drive drive=new Drive(status,locationA,locationB,clientName,clientPhoneNumber,clientEmail);
 
-            //Status status= Status.AVAILABLE;
+            BackendFactorySingelton.getBackend().addDrive(drive, new FireBase_DbManager.Action<Long>() {
+                @Override
+                public void onSuccess(Long obj) {
+                    Toast.makeText(getApplicationContext(), "אחלה בידי",Toast.LENGTH_LONG).show();
+                }
 
-            // Location sourceLocation
-            //Location destLocation,
-            //Time startTime,
-            //Time endTime,
+                @Override
+                public void onFailure(Exception exception) {
 
+                }
 
-            //DBManagerFactory.getManager().addLecturer(contentValues);
+                @Override
+                public void onProgress(String status, double percent) {
+
+                }
+            });
         } catch (Exception e) {
 
         }

@@ -29,12 +29,23 @@
                                           </PersistentState>
                                         </value>
                                       </entry>
+                                      <entry key="image">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="paddingPercent" value="-10" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
                                     </map>
                                   </option>
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="C:\Users\Gilad\Pictures\taxi_image.jpg" />
+                                      <entry key="imageAsset" value="C:\Users\Gilad\Downloads\ic_launcher\web_hi_res_512.png" />
                                       <entry key="outputName" value="im_taxi" />
                                       <entry key="themeColor" value="2a37e5" />
                                     </map>

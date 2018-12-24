@@ -1,6 +1,5 @@
 package com.jct.gilad.gettaxi.model.datasource;
 
-import android.content.ContentValues;
 import android.support.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -14,25 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FireBase_DbManager implements Backend {
-    @Override
-    public long addDrive(Drive drive) {
-        return 0;
-    }
-
-    @Override
-    public boolean removeDrive(long id) {
-        return false;
-    }
-
-    @Override
-    public boolean updateDrive(long id, ContentValues values) {
-        return false;
-    }
-
-    @Override
-    public List<Drive> getDrives() {
-        return null;
-    }
 
     public interface Action<T> {
         void onSuccess(T obj);
@@ -42,11 +22,6 @@ public class FireBase_DbManager implements Backend {
         void onProgress(String status, double percent);
     }
 
-    public interface NotifyDataChange<T> {
-        void OnDataChanged(T obj);
-
-        void onFailure(Exception exception);
-    }
     static DatabaseReference DriveRef;
     static List<Drive> DriveList;
 
@@ -56,15 +31,11 @@ public class FireBase_DbManager implements Backend {
         DriveRef = database.getReference("drives");
         DriveList = new ArrayList<>();
     }
-    public static void addDrive(final Drive drive, final Action<Long> action) {
-        if (true) {//bdika schrih lasot
 
-
-            //leoozif bdika im action icole
-            // add Drive
-            addDriveToFirebase(drive, action);
-        }
+    public void addDrive(final Drive drive, final Action<Long> action) {
+        addDriveToFirebase(drive, action);
     }
+
     private static void addDriveToFirebase(final Drive drive, final Action<Long> action) {
         String key = Long.toString(drive.getClientPhoneNumber());
         DriveRef.child(key).setValue(drive).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -82,7 +53,6 @@ public class FireBase_DbManager implements Backend {
             }
         });
     }
-
 
 
 }
