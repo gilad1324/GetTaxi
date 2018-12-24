@@ -91,13 +91,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         NameEditText.addTextChangedListener(new MyTextWatcher(NameEditText));
         PhoneEditText.addTextChangedListener(new MyTextWatcher(PhoneEditText));
         EmailEditText.addTextChangedListener(new MyTextWatcher(EmailEditText));
-
-        addTaxiButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                submitForm();
-            }
-        });
     }
 
     private void submitForm() {
@@ -117,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         Toast.makeText(getApplicationContext(), "Thank You!", Toast.LENGTH_SHORT).show();
+        addTaxi();
     }
 
     private boolean validateName() {
@@ -341,8 +335,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if (v == addTaxiButton)
-            addTaxi();
+        if (v == addTaxiButton) {
+            submitForm();
+
+        }
         if (v == getLocationButton) {
             getLocation(); // Handle clicks for getLocationButton
             getLocationButton.setEnabled(false);
