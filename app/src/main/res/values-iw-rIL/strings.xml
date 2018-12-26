@@ -11,4 +11,7 @@
     <string name="err_msg_phone">הזן מספר טלפון תקין</string>
     <string name="msg_booking">הזמנת המונית מתבצעת</string>
     <string name="msg_booked">הזמנת המונית בוצעה בהצלחה</string>
+    <string name="TT_add_button">הזמן מונית</string>
+    <string name="TT_mylocation">השתמש במקומי הנוכחי כמוצא</string>
+    <string name="TT_stop_mylocation">הפסק לעדכן את המיקום</string>
 </resources>

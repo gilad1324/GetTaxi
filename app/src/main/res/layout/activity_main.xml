@@ -143,7 +143,8 @@
         app:backgroundTint="@color/cardview_light_background"
         app:fabSize="mini"
         app:layout_constraintStart_toStartOf="@+id/getLocationButton"
-        app:layout_constraintTop_toTopOf="@+id/getLocationButton" />
+        app:layout_constraintTop_toTopOf="@+id/getLocationButton"
+        android:tooltipText="@string/TT_stop_mylocation"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/getLocationButton"
@@ -158,7 +159,8 @@
         app:backgroundTint="@color/cardview_light_background"
         app:fabSize="mini"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_layout_email" />
+        app:layout_constraintTop_toBottomOf="@+id/input_layout_email"
+        android:tooltipText="@string/TT_mylocation"/>
 
 
     <android.support.design.widget.FloatingActionButton
@@ -177,7 +179,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/locationImage" />
+        app:layout_constraintTop_toBottomOf="@+id/locationImage"
+        android:tooltipText="@string/TT_add_button"/>
 
     <ImageView
         android:id="@+id/locationImage"

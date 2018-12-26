@@ -12,4 +12,7 @@
     <string name="err_msg_phone">Enter valid phone number</string>
     <string name="msg_booking">The taxi booking is in progress</string>
     <string name="msg_booked">Your taxi has been successfully booked</string>
+    <string name="TT_add_button">Book a taxi</string>
+    <string name="TT_mylocation">use my location as source</string>
+    <string name="TT_stop_mylocation">Stop locating</string>
 </resources>
