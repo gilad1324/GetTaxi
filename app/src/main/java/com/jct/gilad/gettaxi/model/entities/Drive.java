@@ -17,14 +17,14 @@ public class Drive {
         this.clientEmail = clientEmail;
     }
 
-    Status1 status;
-    Location sourceLocation;
-    Location destLocation;
-    Date startTime;
-    Date endTime;
-    String clientName;
-    String clientPhoneNumber;
-    String clientEmail;
+    private Status1 status;
+    private Location sourceLocation;
+    private Location destLocation;
+    private Date startTime;
+    private Date endTime;
+    private String clientName;
+    private String clientPhoneNumber;
+    private String clientEmail;
 
     public Status1 getStatus() {
         return status;

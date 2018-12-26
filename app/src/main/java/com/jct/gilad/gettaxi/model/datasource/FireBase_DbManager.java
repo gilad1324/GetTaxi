@@ -28,7 +28,7 @@ public class FireBase_DbManager implements Backend {
     static {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DriveRef = database.getReference("drives");
+        DriveRef = database.getReference("rides");
         DriveList = new ArrayList<>();
     }
 
