@@ -6,8 +6,7 @@ import java.util.Date;
 
 
 public class Drive {
-    public Drive(Status1 status, Location sourceLocation, Location destLocation, String clientName, long clientPhoneNumber, String clientEmail) {
-
+    public Drive(Status1 status, Location sourceLocation, Location destLocation, String clientName, String clientPhoneNumber, String clientEmail) {
         this.status = status;
         this.sourceLocation = sourceLocation;
         this.destLocation = destLocation;
@@ -24,7 +23,7 @@ public class Drive {
     Date startTime;
     Date endTime;
     String clientName;
-    long clientPhoneNumber;
+    String clientPhoneNumber;
     String clientEmail;
 
     public Status1 getStatus() {
@@ -75,13 +74,11 @@ public class Drive {
         this.clientName = clientName;
     }
 
-    public Long getClientPhoneNumber() {
+    public String getClientPhoneNumber() {
         return clientPhoneNumber;
     }
 
-    public void setClientPhoneNumber(int clientPhoneNumber) {
-        this.clientPhoneNumber = clientPhoneNumber;
-    }
+    public void setClientPhoneNumber(String clientPhoneNumber) { this.clientPhoneNumber = clientPhoneNumber; }
 
     public String getClientEmail() {
         return clientEmail;
@@ -90,5 +87,4 @@ public class Drive {
     public void setClientEmail(String clientEmail) {
         this.clientEmail = clientEmail;
     }
-
 }

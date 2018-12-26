@@ -32,12 +32,12 @@ public class FireBase_DbManager implements Backend {
         DriveList = new ArrayList<>();
     }
 
-    public void addDrive(final Drive drive, final Action<Long> action) {
+    public void addDrive(final Drive drive, final Action<String> action) {
         addDriveToFirebase(drive, action);
     }
 
-    private static void addDriveToFirebase(final Drive drive, final Action<Long> action) {
-        String key = Long.toString(drive.getClientPhoneNumber());
+    private static void addDriveToFirebase(final Drive drive, final Action<String> action) {
+        String key = drive.getClientPhoneNumber();
         DriveRef.child(key).setValue(drive).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {

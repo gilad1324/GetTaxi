@@ -9,4 +9,6 @@
     <string name="err_msg_name">הזן את שמך המלא</string>
     <string name="err_msg_email">הזן כתובת אימייל תקנית</string>
     <string name="err_msg_phone">הזן מספר טלפון תקין</string>
+    <string name="msg_booking">הזמנת המונית מתבצעת</string>
+    <string name="msg_booked">הזמנת המונית בוצעה בהצלחה</string>
 </resources>

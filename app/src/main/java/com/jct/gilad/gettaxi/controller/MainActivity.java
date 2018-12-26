@@ -29,7 +29,6 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
 import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.jct.gilad.gettaxi.R;
-import com.jct.gilad.gettaxi.model.backend.Backend;
 import com.jct.gilad.gettaxi.model.backend.BackendFactorySingelton;
 import com.jct.gilad.gettaxi.model.datasource.FireBase_DbManager;
 import com.jct.gilad.gettaxi.model.entities.Drive;
@@ -59,9 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     LocationManager locationManager;
     // Define a listener that responds to location updates
     LocationListener locationListener;
-    Backend database;
 
-    private String from, to;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Write a message to the database
@@ -74,15 +71,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void findViews() {
-        ///IdEditText = (EditText)findViewById( R.id.IdEditText );
         NameEditText = (EditText) findViewById(R.id.NameEditText);
         PhoneEditText = (EditText) findViewById(R.id.PhoneEditText);
         EmailEditText = (EditText) findViewById(R.id.EmailEditText);
 
         addTaxiButton = (FloatingActionButton) findViewById(R.id.addTaxiButton);
-        //////////
         addTaxiButton.setOnClickListener(this);
-        //////////
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -95,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         EmailEditText.addTextChangedListener(new MyTextWatcher(EmailEditText));
     }
 
-    private void submitForm() {
+    private void submitFormAndAddTaxi() {
         if (!validateName()) {
             Toast.makeText(getApplicationContext(), R.string.err_msg_name, Toast.LENGTH_SHORT).show();
             return;
@@ -112,8 +107,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
 
-        Toast.makeText(getApplicationContext(), "Thank You!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), R.string.msg_booking, Toast.LENGTH_SHORT).show();
         addTaxi();
+
+        NameEditText.setText("");
+        PhoneEditText.setText("");
+        EmailEditText.setText("");
+        placeAutocompleteFragment1.setText("");
+        placeAutocompleteFragment2.setText("");
+        onClick(stopUpdateButton);
+        inputLayoutName.setErrorEnabled(false);
+        inputLayoutPhone.setErrorEnabled(false);
+        inputLayoutEmail.setErrorEnabled(false);
     }
 
     private boolean validateName() {
@@ -189,11 +194,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case R.id.NameEditText:
                     validateName();
                     break;
-                case R.id.EmailEditText:
-                    validateEmail();
-                    break;
                 case R.id.PhoneEditText:
                     validatePhone();
+                    break;
+                case R.id.EmailEditText:
+                    validateEmail();
                     break;
             }
         }
@@ -343,7 +348,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v == addTaxiButton) {
-            submitForm();
+            submitFormAndAddTaxi();
         }
         if (v == getLocationButton) {
             getLocation(); // Handle clicks for getLocationButton
@@ -366,17 +371,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void addTaxi() {
         try {
             String clientName = NameEditText.getText().toString();
-            long clientPhoneNumber = Long.parseLong(PhoneEditText.getText().toString());
+            String clientPhoneNumber = PhoneEditText.getText().toString();
             String clientEmail = EmailEditText.getText().toString();
 
-            Status1 status= Status1.AVAILABLE;
+            Status1 status = Status1.AVAILABLE;
 
-            Drive drive=new Drive(status,locationA,locationB,clientName,clientPhoneNumber,clientEmail);
+            Drive drive = new Drive(status, locationA, locationB, clientName, clientPhoneNumber, clientEmail);
 
-            BackendFactorySingelton.getBackend().addDrive(drive, new FireBase_DbManager.Action<Long>() {
+            BackendFactorySingelton.getBackend().addDrive(drive, new FireBase_DbManager.Action<String>() {
                 @Override
-                public void onSuccess(Long obj) {
-                    Toast.makeText(getApplicationContext(), "אחלה בידי",Toast.LENGTH_LONG).show();
+                public void onSuccess(String obj) {
+                    Toast.makeText(getApplicationContext(), R.string.msg_booked, Toast.LENGTH_LONG).show();
                 }
 
                 @Override
